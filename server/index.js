@@ -5,15 +5,15 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const express = require("express");
 const app = express();
 
-// app.use(function (req, res, next) {
-//  res.header("Access-Control-Allow-Origin", "https://amazon-clone-ecru-seven.vercel.app/");
-//   res.header(
-//     "Access-Control-Allow-Headers",
-//     "Origin, X-Requested-With, Content-Type, Accept"
-//   );
-//   next();
-// });
-app.use(cors({origin:"https://amazon-clone-ecru-seven.vercel.app/create-checkout-session"},method:["GET","POST"],credentials:true));
+app.use(function (req, res, next) {
+ res.header("Access-Control-Allow-Origin", "https://amazon-clone-ecru-seven.vercel.app/");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
+app.use(cors({origin:"https://amazon-clone-ecru-seven.vercel.app/"},method:["GET","POST"],credentials:true));
 // app.use(cors())
 app.use(express.json());
 
