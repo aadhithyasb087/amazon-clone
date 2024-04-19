@@ -13,7 +13,7 @@ const app = express();
 //   );
 //   next();
 // });
-app.use(cors({origin:"https://amazon-clone-ecru-seven.vercel.app/"},method:["GET","POST"],credentials:true));
+app.use(cors({origin:"https://amazon-clone-ecru-seven.vercel.app/create-checkout-session"},method:["GET","POST"],credentials:true));
 // app.use(cors())
 app.use(express.json());
 
