@@ -23,7 +23,7 @@ app.get("/", (req, res) =>
 {
   res.json("Hello")
 })
-app.post("/create-checkout-session", async (req, res) => {
+app.post("https://amazon-clone-ecru-seven.vercel.app/create-checkout-session", async (req, res) => {
   const { cart, email } = req.body;
   const line_items = cart.map((item) => {
     return {
