@@ -4,17 +4,15 @@ const cors = require("cors");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const express = require("express");
 const app = express();
+app.use(express.json());
 
 app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "https://amazon-clone-ecru-seven.vercel.app/");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
+ res.header("Access-Control-Allow-Origin", "https://amazon-clone-ecru-seven.vercel.app/");
+res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
 app.use(cors());
-app.use(express.json());
 
 
 const YOUR_DOMAIN = "https://amazon-clone-ecru-seven.vercel.app/";
