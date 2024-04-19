@@ -7,7 +7,8 @@ const app = express();
 
 app.use(function (req, res, next) {
  res.header("Access-Control-Allow-Origin", "https://amazon-clone-ecru-seven.vercel.app");
- res.headers("Access-Control-Allow-Methods", 'GET, POST, PUT, DELETE, OPTIONS')
+ res.header("Access-Control-Allow-Methods", 'GET, POST, PUT, DELETE, OPTIONS');
+ res.header("Access-Control-Allow-Credentials":"true");
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept"
@@ -15,7 +16,7 @@ app.use(function (req, res, next) {
   next();
 });
 // app.use(cors({origin:"https://amazon-clone-ecru-seven.vercel.app/"},method:["GET","POST"],credentials:true));
-app.use(cors())
+// app.use(cors())
 app.use(express.json());
 
 
