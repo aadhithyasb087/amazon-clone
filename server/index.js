@@ -4,7 +4,6 @@ const cors = require("cors");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const express = require("express");
 const app = express();
-app.use(express.json());
 
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "http://localhost:3000");
@@ -15,7 +14,8 @@ app.use(function (req, res, next) {
   next();
 });
 app.use(cors());
-app.use(express.static("public"));
+app.use(express.json());
+
 
 const YOUR_DOMAIN = "http://localhost:3000";
 
