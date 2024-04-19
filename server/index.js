@@ -5,29 +5,7 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const express = require("express");
 const app = express();
 app.use(express.json());
-// const corsOptions = {
-//   origin: "*",
-//   credentials: true, //access-control-allow-credentials:true
-//   optionSuccessStatus: 200,
-// };
-// app.use(
-//   cors({
-//     origin: "http://localhost:3000", // use your actual domain name (or localhost), using * is not recommended
-//     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD", "OPTIONS"],
-//     allowedHeaders: [
-//       "Content-Type",
-//       "Origin",
-//       "X-Requested-With",
-//       "Accept",
-//       "x-client-key",
-//       "x-client-token",
-//       "x-client-secret",
-//       "Authorization",
-//       "Access-Control-Allow-Origin",
-//     ],
-//     credentials: true,
-//   })
-// );
+
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "http://localhost:3000");
   res.header(
