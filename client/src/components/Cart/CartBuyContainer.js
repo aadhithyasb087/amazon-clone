@@ -31,7 +31,7 @@ function CartBuyContainer({ totalCartPrice, totalProducts }) {
         "Access-Control-Allow-Origin": "*",
       };
       const checkoutSession = await axios.post(
-        "/create-checkout-session",
+        "https://amazon-clone-rvom.vercel.app/create-checkout-session",
         {
           cart,
           email: user.email,
