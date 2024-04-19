@@ -17,7 +17,7 @@ app.use(cors());
 app.use(express.json());
 
 
-const YOUR_DOMAIN = "http://localhost:3000";
+const YOUR_DOMAIN = "https://amazon-clone-ecru-seven.vercel.app/";
 
 app.get("/", (req, res) =>
 {
