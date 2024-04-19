@@ -28,7 +28,7 @@ function CartBuyContainer({ totalCartPrice, totalProducts }) {
       const stripe = await stripePromise;
       const header = {
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "https://amazon-clone-rvom.vercel.app",
+        "Access-Control-Allow-Origin": "*",
       };
       const checkoutSession = await axios.post(
         "https://amazon-clone-rvom.vercel.app/create-checkout-session",
