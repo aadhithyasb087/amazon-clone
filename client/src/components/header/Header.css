@@ -1,0 +1,230 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+}
+.header__top {
+  height: 75px;
+  display: flex;
+  gap: 0.5 rem;
+  align-items: center;
+  background-color: rgb(19, 25, 33);
+  flex-wrap: wrap;
+  padding: 15px;
+}
+
+@media (max-width: 890px) {
+  .header__top {
+    height: 140px;
+    justify-content: space-evenly;
+  }
+  .header__search {
+    order: 6;
+    margin: 0px 5px;
+  }
+}
+@media (max-width: 585px) {
+  .header__top {
+    height: 210px;
+  }
+
+  .header__search {
+    width: 450px;
+  }
+}
+
+.header__logo {
+  width: 100px;
+  padding: 0px 10px;
+  /* margin-right: 10px; */
+}
+
+.header__logo > img {
+  margin-top: 15px;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.header__location {
+  color: white;
+  display: flex;
+  width: 100px;
+  cursor: pointer;
+  align-items: center;
+}
+.header__location > p {
+  font-size: 12px;
+}
+.header__location > p > span {
+  font-weight: 800;
+}
+
+.header__search {
+  display: flex;
+  flex: 1;
+  min-width: 300px;
+  align-items: center;
+  position: relative;
+  min-width: 300px;
+  margin-left: 10px;
+  margin-right: 15px;
+}
+.header__search:focus-within {
+  border-color: #ff9900;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  box-shadow: 0 0 0 2px #ff9900, 0 0 0 3px rgba(255, 153, 0, 0.5);
+  z-index: 1;
+}
+.header__search__filter {
+  color: rgb(19 25 33);
+  display: flex;
+  background-color: rgb(209 213 219);
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 6px 10px;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  cursor: pointer;
+}
+
+.header__search__filter__dropdown > ul {
+  display: flex;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  position: absolute;
+  margin-left: 5px;
+  left: 0;
+  top: 2.2rem;
+  z-index: 50;
+  padding: 0.5rem;
+  flex-direction: column;
+  gap: 0.25rem;
+  width: 14rem;
+  height: 20rem;
+  color: #000000;
+  background-color: #ffffff;
+  border-color: 1px;
+}
+
+.header__search__filter__dropdown > ul > li {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  letter-spacing: 0.025em;
+  transition-duration: 200ms;
+  cursor: pointer;
+}
+.header__searchInput {
+  width: 100%;
+  height: 100%;
+  border: none;
+  padding: 10px;
+}
+.header__searchInput:focus {
+  outline: none;
+}
+
+.header__searchIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fbbf24;
+
+  padding: 6px 9px;
+  height: 100%;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  cursor: pointer;
+  color: rgb(19 25 33);
+}
+.header__searchIcon:hover {
+  background-color: #f59e0b;
+}
+
+.header__nav {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.header__option__location {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  padding: 5px;
+}
+.header__option {
+  display: flex;
+  flex-direction: column;
+  /* margin: 0px 10px; */
+  color: white;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.header__optionLineOne {
+  font-size: 12px;
+  color: rgb(204 204 204);
+}
+
+.header__optionLineTwo {
+  font-size: 14px;
+  font-weight: 800;
+}
+.header__optionLineTwoLogin {
+  font-size: 14px;
+  font-weight: 800;
+  display: flex;
+}
+.header__optionLineTwoLoginArrow {
+  /* padding-top: 10px; */
+}
+
+.header__shoppingCart {
+  display: flex;
+  align-items: center;
+  color: white;
+  padding: 10px;
+  height: 50px;
+}
+.header__cartIcon {
+  height: 25px;
+}
+
+.header__cartCount {
+  font-size: 16px;
+  font-weight: 800;
+  margin-left: 3px;
+}
+
+.header__hover {
+  border: 1px solid transparent;
+  transition-duration: 0.1s;
+}
+.header__hover:hover {
+  border: 1px solid white;
+}
+
+.header__logout {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: rgb(255 255 255);
+  margin-left: 5px;
+  cursor: pointer;
+  padding: 5px 10px;
+}
+.header__logout > p {
+  /* display: none; */
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 600;
+  color: rgb(255 255 255);
+}

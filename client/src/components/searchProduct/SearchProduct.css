@@ -1,0 +1,22 @@
+.search__product {
+  display: grid;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 2.5rem;
+  max-width: 1536px;
+  margin: 20px 0px;
+}
+@media (min-width: 768px) {
+  .search__product {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.no__products {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20;
+  height: 200px;
+}

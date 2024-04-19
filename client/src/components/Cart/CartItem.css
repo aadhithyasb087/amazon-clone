@@ -1,0 +1,123 @@
+.cartitem {
+  display: flex;
+  margin: 25px;
+  border-bottom: 1px solid lightgrey;
+  padding-bottom: 25px;
+}
+
+.cartitem__image {
+  width: 100%;
+  margin-right: 10px;
+}
+
+.cartitem__image > img {
+  object-fit: contain;
+  width: 100%;
+  height: 11rem;
+}
+
+.cartitem__info {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0px 20px;
+}
+
+.cartitem__title {
+  font-size: 18px;
+  width: 80%;
+  font-weight: 700;
+}
+
+.cartitem__description {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  margin: 10px 0px;
+  /* @media (min-width: 1280px) { 
+  padding-right: 2.5rem; 
+ } */
+}
+.cartitem__unitprice {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  margin-bottom: 10px;
+}
+.cartitem__unitprice > span {
+  font-weight: 600;
+}
+.cartitem__quantity {
+  display: flex;
+  margin-bottom: 10px;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.375rem;
+  width: 10rem;
+  text-align: center;
+  background: #f0f2f2;
+  filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04))
+    drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
+}
+.cartitem__quantity__text {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 400;
+}
+.cartitem__plusminus {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  border-radius: 0.125rem;
+  font-size: 1.3rem;
+  text-align: center;
+  font-weight: 700;
+  background-color: #e5e7eb;
+  transition-duration: 300ms;
+  cursor: pointer;
+  color: rgb(19 25 33);
+  width: 35px;
+}
+.cartitem__plusminus:hover {
+  background-color: #9ca3af;
+}
+.cartitem__quantity__val {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 600;
+  color: rgb(19 25 33);
+}
+.cartitem__remove {
+  padding: 0.25rem;
+  margin-top: 0.5rem;
+  border-radius: 0.5rem;
+  width: 10.3rem;
+  color: #ffffff;
+  background-color: #ef4444;
+  transition-duration: 300ms;
+  font-family: inherit;
+  font-size: 100%;
+  cursor: pointer;
+  text-align: center;
+}
+.cartitem__remove:hover {
+  background-color: #b91c1c;
+}
+
+.cartitem__price {
+  display: flex;
+  justify-content: flex-end;
+  width: 200px;
+}
+
+@media (min-width: 768px) {
+  .cartitem__image {
+    width: 40%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .cartitem__image {
+    width: 20%;
+  }
+}

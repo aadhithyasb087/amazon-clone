@@ -1,0 +1,30 @@
+.order {
+  padding: 30px;
+  margin: 20px 0;
+  border: 1px solid lightgray;
+  background-color: white;
+  position: relative;
+  border-radius: 20px;
+}
+
+.order__time {
+  font-weight: 600;
+}
+/* .order__id {
+  position: absolute;
+  top: 40px;
+  right: 20px;
+} */
+
+.order__total {
+  text-align: right;
+  font-weight: 500;
+}
+
+.order__items {
+  overflow-y: auto;
+  margin-top: 10px;
+  height: 258px;
+  margin-bottom: 10px;
+}
+
