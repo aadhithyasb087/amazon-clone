@@ -14,6 +14,7 @@ const app = express();
 //   next();
 // });
 // app.use(cors({origin:"https://amazon-clone-ecru-seven.vercel.app/"},method:["GET","POST"],));
+app.use(cors())
 app.use(express.json());
 
 
