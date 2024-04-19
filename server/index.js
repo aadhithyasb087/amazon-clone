@@ -19,7 +19,7 @@ app.use(express.json());
 
 const YOUR_DOMAIN = "http://localhost:3000";
 
-app.use("/", (req, res) =>
+app.get("/", (req, res) =>
 {
   res.json("Hello")
 })
