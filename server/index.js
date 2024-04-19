@@ -19,6 +19,10 @@ app.use(express.static("public"));
 
 const YOUR_DOMAIN = "http://localhost:3000";
 
+app.use("/", (req, res) =>
+{
+  res.json("Hello")
+})
 app.post("/create-checkout-session", async (req, res) => {
   const { cart, email } = req.body;
   const line_items = cart.map((item) => {
