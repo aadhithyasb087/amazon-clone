@@ -18,7 +18,7 @@ app.use(express.json());
 //   next();
 // });
 // app.use(cors({origin:"https://amazon-clone-ecru-seven.vercel.app/"},method:["GET","POST"],credentials:true));
-app.use(cors())
+app.use(cors());
 
 
 const YOUR_DOMAIN = "https://amazon-clone-ecru-seven.vercel.app";
