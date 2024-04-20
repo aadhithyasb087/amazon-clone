@@ -1,26 +1,15 @@
-// This is your test secret API key.
-require("dotenv").config();
-const cors = require("cors");
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
-const express = require("express");
-const app = express();
-app.use(express.json());
-
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
-});
-app.use(cors());
-// app.use(express.static("public"));
-
-const YOUR_DOMAIN = "http://localhost:3000";
-
-app.post("/create-checkout-session", async (req, res) => {
-  const { cart, email } = req.body;
+const stripe = async ({
+  stripePromise,
+  stripeVar,
+  email,
+  cart,
+  dispatch,
+  user,
+  setOrderItems,
+}) => {
+  const stripeClient = await stripePromise;
+  const stripeServer = stripeVar(process.env.REACT_APP_STRIPE_SECRET_KEY);
+  const YOUR_DOMAIN = "https://amazon-clone-ecru-seven.vercel.app/";
   const line_items = cart.map((item) => {
     return {
       price_data: {
@@ -39,7 +28,7 @@ app.post("/create-checkout-session", async (req, res) => {
     };
   });
 
-  const session = await stripe.checkout.sessions.create({
+  const checkoutSession = await stripeServer.checkout.sessions.create({
     shipping_address_collection: {
       allowed_countries: ["US", "IN"],
     },
@@ -96,11 +85,28 @@ app.post("/create-checkout-session", async (req, res) => {
     cancel_url: `${YOUR_DOMAIN}/checkout/cancel/`,
     metadata: {
       email,
-      images:JSON.stringify(cart.map(item=>{item.image}))
+      // images:JSON.stringify(cart.map(item=>{item.image}))
     },
   });
-  console.log(session);
-  res.json({ session: session });
-});
 
-app.listen(4242, () => console.log("Running on port 4242"));
+  if (checkoutSession) {
+    const orderItems = {
+      cart: cart,
+      userId: user._id,
+      created: checkoutSession.created,
+      amount: checkoutSession.amount_total / 100,
+      orderId: checkoutSession.id,
+    };
+    dispatch(setOrderItems({ orderItems: orderItems }));
+  }
+  const result = await stripeClient.redirectToCheckout({
+    sessionId: checkoutSession.id,
+  });
+
+  if (result.error) {
+    dispatch(setOrderItems());
+    alert(result.error.message);
+  }
+};
+
+export default stripe;

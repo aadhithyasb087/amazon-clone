@@ -10,6 +10,7 @@ import Register from "./components/authentication/Register";
 import Success from "./components/checkout/Success";
 import Cancel from "./components/checkout/Cancel";
 import SearchProduct from "./components/searchProduct/SearchProduct";
+import ErrorPage from "./components/error/ErrorPage";
 
 const router = createBrowserRouter([
   {
@@ -40,7 +41,7 @@ const router = createBrowserRouter([
       {
         path: "/searchproduct",
         element: <SearchProduct></SearchProduct>,
-        loader:productsData
+        loader: productsData,
       },
       {
         path: "/checkout/success",
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
       {
         path: "/checkout/cancel",
         element: <Cancel />,
+      },
+      {
+        path: "*",
+        element: <ErrorPage />,
       },
     ],
   },

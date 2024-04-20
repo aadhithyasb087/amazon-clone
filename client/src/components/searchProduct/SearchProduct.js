@@ -16,7 +16,6 @@ function SearchProduct() {
     ? data.filter((product) => {
         const title = product.title.toLowerCase();
         const category = product.category.toLowerCase();
-        console.log(title, title.includes(myParam));
         return title.includes(myParam) || category.includes(myParam);
       })
     : [];
@@ -38,7 +37,6 @@ function SearchProduct() {
       </div>
     );
   } else {
-    console.log(filteredProducts);
     return (
       <div className="no__products">
         <p>

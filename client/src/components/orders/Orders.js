@@ -9,7 +9,6 @@ import {Link,useNavigate} from 'react-router-dom'
 function Orders() {
   // const [{ user }, dispatch] = useStateValue();
   const user = useSelector((state) => state.amazon.userInfo);
-  console.log(user);
 
   const [orders, setOrders] = useState([]);
   useEffect(() => {
@@ -25,7 +24,6 @@ function Orders() {
           }))
         );
       });
-    console.log(orders);
   }, [user]);
   const navigate = useNavigate();
   

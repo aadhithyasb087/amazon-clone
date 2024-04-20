@@ -8,6 +8,8 @@ import { db } from "../../firebase";
 import { loadStripe } from "@stripe/stripe-js";
 import { setOrderItems } from "../../redux/amazonSlice";
 import Success from "../checkout/Success";
+import stripeVar from "stripe";
+import stripe from "./stripe";
 
 function CartBuyContainer({ totalCartPrice, totalProducts }) {
   const navigate = useNavigate();
@@ -17,51 +19,13 @@ function CartBuyContainer({ totalCartPrice, totalProducts }) {
   // const { total, formatTotal } = getCartTotal(cart);
   const cart = useSelector((state) => state.amazon.cart);
   const user = useSelector((state) => state.amazon.userInfo);
-
-  const checkoutHandler = async () =>
-  {
-    if(!user._id){
-      navigate('/login')
+  const email = user.email;
+  const checkoutHandler = async () => {
+    if (!user._id) {
+      navigate("/login");
+    } else {
+      stripe({ stripePromise, stripeVar, email, cart, dispatch,user,setOrderItems });
     }
-    else
-    {
-      const stripe = await stripePromise;
-      const header = {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-      };
-      const checkoutSession = await axios.post(
-        "https://amazon-clone-rvom.vercel.app/create-checkout-session",
-        {
-          cart,
-          email: user.email,
-        },
-        { headers: header }
-      );
-     
-      if (checkoutSession.data.session.id) {
-        console.log(checkoutSession.data);
-        const orderItems = {
-          cart: cart,
-          userId: user._id,
-          created: checkoutSession.data.session.created,
-          amount: checkoutSession.data.session.amount_total / 100,
-          orderId: checkoutSession.data.session.id,
-        };
-        console.log("order", orderItems);
-        dispatch(setOrderItems({ orderItems: orderItems }));
-      }
-      const result = await stripe.redirectToCheckout({
-        sessionId: checkoutSession.data.session.id,
-      });
-
-      if (result.error) {
-        dispatch(setOrderItems());
-        alert(result.error.message);
-      }
-    }
-    
-   
   };
 
   return (

@@ -13,25 +13,58 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { signOutReducer } from "../../redux/amazonSlice";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase";
-
-// import { useStateValue } from "../components/state/StateProvider";
-// import { auth } from "../firebase";
+import axios from "axios";
 
 function Header() {
-  // const [{ cart, user }, dispatch] = useStateValue();
-
   const [showAll, setShowAll] = useState(false);
   const totalProducts = useSelector((state) => state.amazon.totalProducts);
   const userInfo = useSelector((state) => state.amazon.userInfo);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [searchProduct, setSearchProduct] = useState("");
-  
+
+  const [lat, setLat] = useState(null);
+  const [long, setLong] = useState(null);
+  const [currentCity, setCurrentCity] = useState();
+  const API_ENDPOINT =
+    "https://nominatim.openstreetmap.org/reverse?format=json&";
+
+  useEffect(() => {
+    const geolocationAPI = navigator.geolocation;
+    const getUserCoordinates = () => {
+      if (!geolocationAPI) {
+        console.log("Geolocation API is not available in your browser!");
+      } else {
+        geolocationAPI.getCurrentPosition(
+          (position) => {
+            const { coords } = position;
+            setLat(coords.latitude);
+            setLong(coords.longitude);
+          },
+          (error) => {
+            console.log("Something went wrong getting your position!");
+          }
+        );
+      }
+    };
+    getUserCoordinates();
+    const finalApi = `${API_ENDPOINT}lat=${lat}&lon=${long}`;
+    axios
+      .get(finalApi)
+      .then((response) => {
+        setCurrentCity(
+          `${response.data.address.city}, ${response.data.address.state}`
+        );
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [lat, long]);
+
   const signOutHandler = () => {
     signOut(auth)
       .then(() => {
         dispatch(signOutReducer());
-        console.log(userInfo);
         alert("Sign out successfully");
       })
       .catch((error) => {
@@ -60,8 +93,8 @@ function Header() {
         <div className="header__hover header__location">
           <LocationOnIcon></LocationOnIcon>
           <div className="header__option__location">
-            <span className="header__optionLineOne">Deliver to</span>
-            <span className="header__optionLineTwo">Chennai</span>
+            <span className="header__optionLineOne">Delivering to</span>
+            <span className="header__optionLineTwo">{currentCity}</span>
           </div>
         </div>
         <div className="header__search">

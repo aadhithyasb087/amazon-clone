@@ -8,8 +8,6 @@ import { useSelector } from "react-redux";
 function Success() {
   const dispatch = useDispatch();
   const orderItem = useSelector((state) => state.amazon.orderItems);
-  console.log(orderItem);
-  // const [orders, setOrders] = useState([]);
     const user = useSelector((state) => state.amazon.userInfo);
   useEffect(() => {
     db.collection("users").doc(orderItem.userId).collection("orders").doc(orderItem.orderId).set({

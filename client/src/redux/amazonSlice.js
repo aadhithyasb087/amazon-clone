@@ -29,7 +29,6 @@ export const amazonSlice = createSlice({
       state.totalCartPrice = (
         parseFloat(state.totalCartPrice) + parseFloat(action.payload.price)
       ).toFixed(2);
-
       if (state.totalCartPrice === undefined || state.totalCartPrice === null) {
         state.totalCartPrice = 0;
       }
@@ -45,9 +44,7 @@ export const amazonSlice = createSlice({
         state.totalProducts--;
         const item = state.cart.find((item) => item.id === action.payload.id);
         item.quantity--;
-         item.totalPrice = (
-          item.quantity * action.payload.price
-        ).toFixed(2);
+        item.totalPrice = (item.quantity * action.payload.price).toFixed(2);
         if (item.quantity === 0) {
           state.cart = [];
         }
@@ -80,8 +77,7 @@ export const amazonSlice = createSlice({
       state.totalCartPrice = 0;
       state.totalProducts = 0;
     },
-    setOrderItems: (state, action) =>
-    {
+    setOrderItems: (state, action) => {
       state.orderItems = action.payload.orderItems || [];
     },
   },
