@@ -1,4 +1,4 @@
-# Amazon Clone Demo
+## Amazon Clone Demo
 
 [Amazon Clone App](https://amazon-clone-ecru-seven.vercel.app/)
 
