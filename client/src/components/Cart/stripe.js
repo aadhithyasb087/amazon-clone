@@ -85,7 +85,6 @@ const stripe = async ({
     cancel_url: `${YOUR_DOMAIN}/checkout/cancel/`,
     metadata: {
       email,
-      // images:JSON.stringify(cart.map(item=>{item.image}))
     },
   });
 

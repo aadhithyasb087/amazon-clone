@@ -15,8 +15,6 @@ function CartBuyContainer({ totalCartPrice, totalProducts }) {
   const navigate = useNavigate();
   const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
   const dispatch = useDispatch();
-  // const [{ cart }, dispatch] = useStateValue();
-  // const { total, formatTotal } = getCartTotal(cart);
   const cart = useSelector((state) => state.amazon.cart);
   const user = useSelector((state) => state.amazon.userInfo);
   const email = user.email;
@@ -41,7 +39,6 @@ function CartBuyContainer({ totalCartPrice, totalProducts }) {
         </span>
       </p>
       <p className="cart__buy__total">
-        {/* Subtotal ({cart.length}): <strong>{formatTotal}</strong> */}
         Subtotal ({totalProducts}): <strong>₹ {totalCartPrice}</strong>
       </p>
       <small className="cart__buy__gift">

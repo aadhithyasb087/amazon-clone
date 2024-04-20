@@ -1,5 +1,4 @@
 import React from "react";
-import "./Footer.css";
 import FooterTop from "./FooterTop";
 import FooterMiddle from "./FooterMiddle";
 import FooterBottom from "./FooterBottom";
@@ -12,6 +11,7 @@ function Footer() {
       {!userInfo._id && (<FooterTop />)}
       <FooterMiddle />
       <FooterBottom />
+      
     </div>
   );
 }

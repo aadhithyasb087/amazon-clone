@@ -7,7 +7,6 @@ import Order from "../orders/Order";
 import { emptyCart } from "../../assets";
 import {Link,useNavigate} from 'react-router-dom'
 function Orders() {
-  // const [{ user }, dispatch] = useStateValue();
   const user = useSelector((state) => state.amazon.userInfo);
 
   const [orders, setOrders] = useState([]);

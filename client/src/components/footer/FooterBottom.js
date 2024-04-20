@@ -23,6 +23,16 @@ const FooterBottom = () =>
           ))}
         </div>
       </div>
+      <div className="footer__copyrights">
+        <div>
+          <ul>
+            <li>Conditions of Use</li>
+            <li>Privacy Notice</li>
+            <li>Your Ads Privacy Choices</li>
+          </ul>
+        </div>
+        <div>© 2000-2026, Amazon.com, Inc. or its affiliates</div>
+      </div>
     </div>
   );
 };

@@ -39,18 +39,19 @@ export const amazonSlice = createSlice({
     deleteProduct: (state, action) => {
       if (action.payload.deleteOneItem) {
         state.totalCartPrice = (
-          state.totalCartPrice - action.payload.price
+          state.totalCartPrice - parseFloat(action.payload.price)
         ).toFixed(2);
         state.totalProducts--;
         const item = state.cart.find((item) => item.id === action.payload.id);
         item.quantity--;
         item.totalPrice = (item.quantity * action.payload.price).toFixed(2);
         if (item.quantity === 0) {
-          state.cart = [];
+        state.cart = state.cart.filter((item) => item.id !== action.payload.id);
+          
         }
       } else {
         state.totalCartPrice = (
-          state.totalCartPrice - action.payload.totalPrice
+          state.totalCartPrice - parseFloat(action.payload.totalPrice)
         ).toFixed(2);
         state.totalProducts -= action.payload.quantity;
         state.cart = state.cart.filter((item) => item.id !== action.payload.id);

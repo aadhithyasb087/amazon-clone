@@ -1,4 +1,3 @@
-import "./App.css";
 import Home from "./components/home/Home";
 import Cart from "./components/Cart/Cart";
 import RootLayout from "./components/RootLayout";
@@ -68,23 +67,7 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  // const [{}, dispatch] = useStateValue();
 
-  // useEffect(() => {
-  //   auth.onAuthStateChanged((authUser) => {
-  //     if (authUser) {
-  //       dispatch({
-  //         type: "SET_USER",
-  //         user: authUser,
-  //       });
-  //     } else {
-  //       dispatch({
-  //         type: "SET_USER",
-  //         user: null,
-  //       });
-  //     }
-  //   });
-  // }, [dispatch]);
   return <RouterProvider router={router}></RouterProvider>;
 }
 

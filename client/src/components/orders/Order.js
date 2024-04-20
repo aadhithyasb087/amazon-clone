@@ -2,19 +2,14 @@ import React from "react";
 import "./Order.css";
 import moment from "moment";
 import CartItem from "../Cart/CartItem";
-// import { getCartTotal } from "../reducer";
 
 function Order({ order }) {
-  // const { total, formatTotal } = getCartTotal(order.data.cart);
   return (
     <div className="order">
-      {/* <h2>Order</h2> */}
       <p className="order__time">
         {moment.unix(order.data.created).format("MMMM Do YYYY, h:mma")}
       </p>
-      {/* <p className="order__id">
-        <small>{order.id}</small>
-      </p> */}
+
       
         <div className="order__items">
           {order.data.cart.map((item) => (

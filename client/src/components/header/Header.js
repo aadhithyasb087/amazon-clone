@@ -75,8 +75,16 @@ function Header() {
     if (searchProduct) {
       navigate(`/searchproduct?product=${searchProduct}`);
     }
+    else{
+      navigate("/")
+    }
   };
-  const handleKeyDown = (event) => {
+  const handleKeyDown = (event) =>
+  {
+    if (!searchProduct)
+    {
+      navigate("/");
+    }
     if (event.key === "Enter" && searchProduct) {
       navigate(`/searchproduct?product=${searchProduct}`);
     }
@@ -86,7 +94,10 @@ function Header() {
     <div className="header">
       <div className="header__top">
         <Link to="/">
-          <div className="header__hover header__logo">
+          <div className="header__hover header__logo" onClick={() =>
+          {
+            setSearchProduct("")
+          }}>
             <img src={logo} alt="amazon-logo" />
           </div>
         </Link>
@@ -94,7 +105,9 @@ function Header() {
           <LocationOnIcon></LocationOnIcon>
           <div className="header__option__location">
             <span className="header__optionLineOne">Delivering to</span>
-            <span className="header__optionLineTwo">{currentCity}</span>
+            <span className="header__optionLineTwo">
+              {currentCity ? currentCity : "Chennai"}
+            </span>
           </div>
         </div>
         <div className="header__search">
@@ -152,13 +165,13 @@ function Header() {
               </p>
             </span>
           </div>
-          <Link to="/orders">
-            <div className="header__hover header__option">
-              <span className="header__optionLineOne">Returns</span>
-              <span className="header__optionLineTwo">& Orders</span>
-            </div>
-          </Link>
         </div>
+        <Link to="/orders">
+          <div className="header__hover header__option">
+            <span className="header__optionLineOne">Returns</span>
+            <span className="header__optionLineTwo">& Orders</span>
+          </div>
+        </Link>
         <Link to="/cart">
           <div className="header__hover header__shoppingCart">
             <ShoppingCartIcon className="header__cartIcon" fontSize="large" />

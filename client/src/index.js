@@ -16,11 +16,6 @@ root.render(
   </React.StrictMode>
 );
 
-// import {StateProvider} from "./components/state/StateProvider"
-// import reducer,{ initialState } from "./components/reducer";
-/* <StateProvider initialState={initialState} reducer={reducer}>
-  <App />
-</StateProvider>; */
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

@@ -14,7 +14,7 @@
   padding: 15px;
 }
 
-@media (max-width: 890px) {
+@media (max-width: 990px) {
   .header__top {
     height: 140px;
     justify-content: space-evenly;
@@ -58,7 +58,6 @@
 }
 .header__location > p > span {
   font-weight: 800;
-
 }
 
 .header__search {
@@ -162,10 +161,10 @@
 .header__option {
   display: flex;
   flex-direction: column;
-  /* margin: 0px 10px; */
   color: white;
   padding: 5px;
   cursor: pointer;
+  height:50px
 }
 
 .header__optionLineOne {
@@ -181,9 +180,6 @@
   font-size: 14px;
   font-weight: 800;
   display: flex;
-}
-.header__optionLineTwoLoginArrow {
-  /* padding-top: 10px; */
 }
 
 .header__shoppingCart {

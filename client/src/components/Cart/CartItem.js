@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./CartItem.css";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, deleteProduct } from "../../redux/amazonSlice";
-
-// import { useStateValue } from "../state/StateProvider";
 
 function CartItem({
   id,
@@ -20,6 +18,7 @@ function CartItem({
 }) {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.amazon.cart);
+  var quantityVal = 0;
   var totalPriceVal = 0;
   if (totalPrice) {
     totalPriceVal = totalPrice;
@@ -32,14 +31,22 @@ function CartItem({
     dispatch(deleteProduct({ id, totalPrice, quantity }));
   };
   const addItemHandler = () => {
-    dispatch(
-      addToCart({
-        id: id,
-        totalPrice: 0,
-        price: price,
-        quantity: quantity,
-      })
-    );
+    if (cart.length) {
+      const item = cart.find((item) => item.id === id);
+      quantityVal = item.quantity;
+    }
+    if (quantityVal <= 10) {
+      dispatch(
+        addToCart({
+          id: id,
+          totalPrice: 0,
+          price: price,
+          quantity: quantity,
+        })
+      );
+    } else {
+      alert("Max Order:10. You have reached maximum order for this product");
+    }
   };
   const removeOneItemHandler = () => {
     dispatch(
