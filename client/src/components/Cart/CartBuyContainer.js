@@ -26,13 +26,27 @@ function CartBuyContainer({ totalCartPrice, totalProducts }) {
     else
     {
       const stripe = await stripePromise;
-      const checkoutSession = await axios.post(
+      try{
+        const checkoutSession = await axios.post(
         "https://amazon-clone-rvom.vercel.app/create-checkout-session",
         {
           cart,
           email: user.email,
         }
       );
+      }
+      catch(e){
+        console.log(error)
+      }
+
+        
+      // const checkoutSession = await axios.post(
+      //   "https://amazon-clone-rvom.vercel.app/create-checkout-session",
+      //   {
+      //     cart,
+      //     email: user.email,
+      //   }
+      // );
      
       if (checkoutSession.data.session.id) {
         console.log(checkoutSession.data);
