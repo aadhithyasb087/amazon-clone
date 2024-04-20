@@ -27,13 +27,13 @@ function CartBuyContainer({ totalCartPrice, totalProducts }) {
     {
       const stripe = await stripePromise;
       var checkoutSession="";
+      const Server_API="https://amazon-clone-rvom.vercel.app/create-checkout-session"
       try{
-        checkoutSession = await axios.post(
-        "https://amazon-clone-rvom.vercel.app/create-checkout-session",
+        checkoutSession = await axios.post(Server_API,
         {
           cart,
           email: user.email,
-        }
+        },
       );
       }
       catch(e){
@@ -49,7 +49,7 @@ function CartBuyContainer({ totalCartPrice, totalProducts }) {
       //   }
       // );
      
-      if (checkoutSession.data.session.id) {
+      if (checkoutSession.data) {
         console.log(checkoutSession.data);
         const orderItems = {
           cart: cart,
