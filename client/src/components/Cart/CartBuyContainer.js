@@ -37,7 +37,7 @@ function CartBuyContainer({ totalCartPrice, totalProducts }) {
       );
       }
       catch(e){
-        console.log(error)
+        console.log(e);
       }
 
         
