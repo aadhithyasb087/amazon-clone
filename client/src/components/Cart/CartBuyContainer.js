@@ -26,8 +26,9 @@ function CartBuyContainer({ totalCartPrice, totalProducts }) {
     else
     {
       const stripe = await stripePromise;
+      var checkoutSession="";
       try{
-        const checkoutSession = await axios.post(
+        checkoutSession = await axios.post(
         "https://amazon-clone-rvom.vercel.app/create-checkout-session",
         {
           cart,
