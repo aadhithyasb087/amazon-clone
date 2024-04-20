@@ -125,8 +125,8 @@ const line_items = cart.map((item) => {
     success_url: `${YOUR_DOMAIN}/checkout/success/`,
     cancel_url: `${YOUR_DOMAIN}/checkout/cancel/`,
     metadata: {
-      email,
-      images:JSON.stringify(cart.map(item=>{item.image}))
+      user.email,
+      // images:JSON.stringify(cart.map(item=>{item.image}))
     },
   });
   console.log(checkoutSession);
