@@ -22,10 +22,10 @@ function Product({ id, title, image, price, rating, description, category }) {
   const dispatch = useDispatch();
 
   const addToCartHandler = () => {
-    var quantity = 0;
+    var quantity = 1;
     if (cart.length) {
-      const item = cart.find((item) => item.id === id);
-      quantity = item?item.quantiy:0;
+      const cartItem = cart.find((item) => item.id === id);
+      quantity = cartItem?cartItem.quantiy;  
     }
     if (quantity <= 10) {
       dispatch(
