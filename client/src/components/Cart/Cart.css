@@ -27,9 +27,12 @@
   border-radius: 3px;
   padding-left: 30px;
   margin-bottom: 20px;
-
-  /* height: fit-content; */
 }
+ @media (min-width: 394px) { 
+   .cart__left{
+  width: 380px;
+   }
+ }
 
 .cart__left__info {
   display: flex;
