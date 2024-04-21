@@ -25,7 +25,7 @@ function Product({ id, title, image, price, rating, description, category }) {
     var quantity = 1;
     if (cart.length) {
       const cartItem = cart.find((item) => item.id === id);
-      quantity = cartItem?cartItem.quantiy;  
+      quantity = cartItem && cartItem.quantiy;  
     }
     if (quantity <= 10) {
       dispatch(
