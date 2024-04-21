@@ -33,6 +33,12 @@
   -ms-interpolation-mode: bicubic;
 }
 
+@media(max-width:600px){
+.bannerImgCont>img{
+  width:650px !important;
+}
+}
+
 .slick-next,
 .slick-prev {
   width: 6%;
