@@ -107,6 +107,10 @@
   justify-content: center;
   align-items: center;
 }
+@media(max-width:700px){
+  .empty__cart__cont{
+  flex-direction:column;
+}
 
 .empty__cart__img {
   padding: 1rem;
