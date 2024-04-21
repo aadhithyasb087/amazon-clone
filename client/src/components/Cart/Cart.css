@@ -111,6 +111,7 @@
   .empty__cart__cont{
   flex-direction:column;
 }
+}
 
 .empty__cart__img {
   padding: 1rem;
