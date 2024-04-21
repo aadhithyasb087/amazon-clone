@@ -28,7 +28,7 @@ function CartItem({
   }
 
   const removeItemHandler = () => {
-    dispatch(deleteProduct({ id, totalPrice, quantity }));
+    dispatch(deleteProduct({ id, totalPriceVal, quantity }));
   };
   const addItemHandler = () => {
     if (cart.length) {
