@@ -16,10 +16,10 @@ export const amazonSlice = createSlice({
       const item = state.cart.find((item) => item.id === action.payload.id);
       if (item) {
         item.quantity++;
-        item.totalPrice = (item.quantity * action.payload.price).toFixed(2);
+        item.totalPrice = (item.quantity * parseFloat(action.payload.price)).toFixed(2);
       } else {
         action.payload.totalPrice = (
-          action.payload.quantity * action.payload.price
+          parseFloat(action.payload.quantity) * action.payload.price
         ).toFixed(2);
         state.cart.push(action.payload);
       }
@@ -39,19 +39,19 @@ export const amazonSlice = createSlice({
     deleteProduct: (state, action) => {
       if (action.payload.deleteOneItem) {
         state.totalCartPrice = (
-          state.totalCartPrice - parseFloat(action.payload.price)
+          parseFloat(state.totalCartPrice) - parseFloat(action.payload.price)
         ).toFixed(2);
         state.totalProducts--;
         const item = state.cart.find((item) => item.id === action.payload.id);
         item.quantity--;
-        item.totalPrice = (item.quantity * action.payload.price).toFixed(2);
+        item.totalPrice = (item.quantity * parseFloat(action.payload.price)).toFixed(2);
         if (item.quantity === 0) {
         state.cart = state.cart.filter((item) => item.id !== action.payload.id);
           
         }
       } else {
         state.totalCartPrice = (
-          state.totalCartPrice - parseFloat(action.payload.totalPrice)
+          parseFloat(state.totalCartPrice) - parseFloat(action.payload.totalPrice)
         ).toFixed(2);
         state.totalProducts -= action.payload.quantity;
         state.cart = state.cart.filter((item) => item.id !== action.payload.id);
@@ -77,6 +77,7 @@ export const amazonSlice = createSlice({
       state.cart = [];
       state.totalCartPrice = 0;
       state.totalProducts = 0;
+      state.orderItems=[];
     },
     setOrderItems: (state, action) => {
       state.orderItems = action.payload.orderItems || [];
