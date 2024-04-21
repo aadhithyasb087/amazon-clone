@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 function Product({ id, title, image, price, rating, description, category }) {
   const [showSideNavCart, setShowSideNavCart] = useState(false);
   const cart = useSelector((state) => state.amazon.cart);
-  var quantity = 0;
+  
   const ref = useRef();
   useEffect(() => {
     document.body.addEventListener("click", (e) => {
@@ -22,6 +22,7 @@ function Product({ id, title, image, price, rating, description, category }) {
   const dispatch = useDispatch();
 
   const addToCartHandler = () => {
+    var quantity = 0;
     if (cart.length) {
       const item = cart.find((item) => item.id === id);
       quantity = item?item.quantiy:0;
