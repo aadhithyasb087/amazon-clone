@@ -51,7 +51,7 @@ export const amazonSlice = createSlice({
         }
       } else {
         state.totalCartPrice = (
-          parseFloat(state.totalCartPrice) - parseFloat(action.payload.totalPrice)
+          parseFloat(state.totalCartPrice) - parseFloat(action.payload.totalPriceVal)
         ).toFixed(2);
         state.totalProducts -= action.payload.quantity;
         state.cart = state.cart.filter((item) => item.id !== action.payload.id);
