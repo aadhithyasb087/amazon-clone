@@ -22,7 +22,7 @@ function Product({ id, title, image, price, rating, description, category }) {
   const dispatch = useDispatch();
 
   const addToCartHandler = () => {
-    var quantity = 1;
+    let quantity = 1;
     if (cart.length) {
       const cartItem = cart.find((item) => item.id === id);
       quantity = cartItem && cartItem.quantiy;  
