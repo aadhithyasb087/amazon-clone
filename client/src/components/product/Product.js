@@ -24,7 +24,7 @@ function Product({ id, title, image, price, rating, description, category }) {
   const addToCartHandler = () => {
     if (cart.length) {
       const item = cart.find((item) => item.id === id);
-      quantity = item.quantity;
+      quantity = item.quantity?item.quantiy:0;
     }
     if (quantity <= 10) {
       dispatch(
