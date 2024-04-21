@@ -28,7 +28,7 @@
   padding-left: 30px;
   margin-bottom: 20px;
 }
- @media (min-width: 394px) { 
+ @media (max-width: 394px) { 
    .cart__left{
   width: 380px;
    }
