@@ -31,10 +31,13 @@ function CartItem({
     dispatch(deleteProduct({ id, totalPrice, quantity }));
   };
   const addItemHandler = () => {
+    var quantity = 0;
     if (cart.length) {
       const item = cart.find((item) => item.id === id);
-      quantityVal = item.quantity;
+      quantity = item ? item.quantity : 0;
+      console.log(item && (item.category,item.quantity))
     }
+    
     if (quantityVal <= 10) {
       dispatch(
         addToCart({
