@@ -36,7 +36,7 @@ function CartItem({
       quantityVal = item ? item.quantity : 0;
     }
     
-    if (quantityVal <= 10) {
+    if (quantityVal < 10) {
       dispatch(
         addToCart({
           id: id,
