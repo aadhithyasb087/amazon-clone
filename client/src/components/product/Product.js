@@ -28,7 +28,7 @@ function Product({ id, title, image, price, rating, description, category }) {
       quantity = item ? item.quantity : 0;
       console.log(item && (item.category,item.quantity))
     }
-    if (quantityVal <= 10) {
+    if (quantity <= 10) {
       dispatch(
         addToCart({
           id: id,
