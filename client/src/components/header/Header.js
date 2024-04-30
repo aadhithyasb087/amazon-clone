@@ -52,9 +52,18 @@ function Header() {
     axios
       .get(finalApi)
       .then((response) => {
-        setCurrentCity(
-          `${response.data.address.city}, ${response.data.address.state}`
-        );
+      if (response.data.address.city)
+        {
+           setCurrentCity(
+             `${response.data.address.city}, ${response.data.address.state}`
+           );
+        }
+        else
+        {
+          setCurrentCity(
+             `${response.data.address.state}`
+           );
+        }
       })
       .catch((err) => {
         console.log(err);
